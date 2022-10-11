@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace Quiz_exam
 {
     internal class User
     {
-        string login, password;
-        DateTime dateOfBirth;
-        public static string filePath = "Users.txt";
+        string login, password, dateOfBirth;
+        
 
         public User ()
         {
             login = "";
             password = "";
-            dateOfBirth = DateTime.MinValue;
+            dateOfBirth = "";
         }
 
-        public User (string login, string password, DateTime dateOfBirth)
+        public User (string login, string password, string dateOfBirth)
         {
             this.login = login;
             this.password = password;
@@ -36,9 +36,25 @@ namespace Quiz_exam
             return password;
         }
 
-        public void setLogin(string login)
+        public string getDateBirth()
         {
-            this.login = login;
+            return dateOfBirth;
+        }
+
+        public bool setLogin()
+        {
+            Write("Enter login:      ");
+            string login = ReadLine();
+            if (Datebase.isLoginUnique(this.login))
+            {
+                this.login = login;
+                return true;
+            }
+            else
+            {
+                WriteLine("This login is already exists");
+                return false;
+            }
         }
 
         public void setPassword (string password)
@@ -46,7 +62,7 @@ namespace Quiz_exam
             this.password = password;
         }
 
-        public void setBirthDate (DateTime dateOfBirth)
+        public void setBirthDate (string dateOfBirth)
         {
             this.dateOfBirth = dateOfBirth;
         }

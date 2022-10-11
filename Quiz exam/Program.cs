@@ -10,6 +10,7 @@ namespace Quiz_exam
     {
         static void Main(string[] args)
         {
+            Menu.startProgram();
         }
     }
 }
